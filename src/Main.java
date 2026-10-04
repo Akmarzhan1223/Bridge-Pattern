@@ -9,7 +9,7 @@ public class Main {
 
     static void runDemo() {
         int pass = 0;
-        int total = 5;
+        int total = 7;
 
         // T1: A1 + I1
         Shape circle1 = new Circle("C1", 2, new VectorRenderer());
@@ -59,6 +59,20 @@ public class Main {
                 + " | stateUnchanged=" + idUnchanged
                 + " before=" + beforeResult
                 + " | after=" + afterResult);
+        // T6: A1 + I3
+        Shape circle3 = new Circle("C6", 2, new AsciiRenderer());
+        String t6Actual = circle3.execute();
+        String t6Expected = "ASCII circle radius=2.0";
+        boolean t6 = t6Actual.equals(t6Expected);
+        printResult("T6", t6, "Circle + AsciiRenderer", t6Actual, t6Expected);
+
+        // T7: A2 + I3
+        Shape square3 = new Square("S3", 3, new AsciiRenderer());
+        String t7Actual = square3.execute();
+        String t7Expected = "ASCII square side=3.0";
+        boolean t7 = t7Actual.equals(t7Expected);
+        printResult("T7", t7, "Square + AsciiRenderer", t7Actual, t7Expected);
+
 
 
 
@@ -67,6 +81,8 @@ public class Main {
         if (t3) pass++;
         if (t4) pass++;
         if (t5) pass++;
+        if (t6) pass++;
+        if (t7) pass++;
 
 
         System.out.println("SUMMARY: " + pass + "/" + total + " PASS");
